@@ -3,39 +3,117 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(45deg, cyan, yellow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.login-container {
+            width: 400px;
+            background-color: #1c352c;
+            padding: 60px 40px;
+            border-radius: 15px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+        }
+
+        button {
+            background-color: dodgerblue;
+            color: white;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: deepskyblue;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 
 <body>
-    <h2>Cadastro de Usuário</h2>
-    <form id="cadastroForm">
-        <input type="text" id="nome" placeholder="Nome" required><br><br>
-        <input type="email" id="email" placeholder="Email" required><br><br>
-        <input type="password" id="senha" placeholder="Senha" required><br><br>
-        <button type="submit">Cadastrar</button>
-    </form>
+    <div class="login-container">
+        <h1>Login</h1>
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="password" id="senha" placeholder="Senha" required>
+        <button onclick="cadastrarUsuario()">Enviar</button>
+    </div>
 
     <script>
-        const form = document.getElementById('cadastroForm');
-
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
+        function cadastrarUsuario() {
+            const nome = document.getElementById('nome').value.trim();
             const senha = document.getElementById('senha').value;
 
+            if (!nome || !senha) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
             const usuario = {
-                nome,
-                email,
-                senha
+                nome: nome,
+                senha: senha
             };
 
-            // Salvar no LocalStorage
-            localStorage.setItem('usuario', JSON.stringify(usuario));
-            alert('Cadastro realizado com sucesso!');
-            form.reset();
-        });
+            localStorage.setItem(nome, JSON.stringify(usuario));
+
+            alert('Cadastro/Login salvo com sucesso!');
+            document.getElementById('nome').value = '';
+            document.getElementById('senha').value = '';
+        }
     </script>
 </body>
 
