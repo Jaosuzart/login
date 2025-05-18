@@ -20,7 +20,6 @@
         div {
             width: 400px;
             background-color: #1c352c;
-            /* tom escuro para contraste */
             padding: 60px 40px;
             border-radius: 15px;
             color: #fff;
@@ -45,30 +44,26 @@
             margin-bottom: 25px;
         }
 
-        input {
+        input,
+        button {
             width: 100%;
             padding: 15px;
             margin: 10px 0;
             border: none;
             border-radius: 10px;
-            outline: none;
             font-size: 15px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
         }
 
         input:focus {
+            outline: none;
             border: 2px solid #00ffff;
             box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
         }
 
         button {
             background-color: dodgerblue;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            border-radius: 10px;
             color: white;
-            font-size: 15px;
             transition: transform 0.2s ease, background-color 0.3s ease;
         }
 
