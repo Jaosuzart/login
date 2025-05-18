@@ -7,17 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(45deg, cyan, yellow);
+        * {
             margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        div {
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            /* Impede rolagem lateral */
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: linear-gradient(45deg, cyan, yellow);
+            display: flex;
+            justify-content: center;
+            /* Centraliza horizontalmente */
+            align-items: center;
+            /* Centraliza verticalmente */
+        }
+
+        /* Estilo para o container do formulário de login */
+        div.login-container {
+            /* Adicionando uma classe para ser mais específico */
             width: 400px;
             background-color: #1c352c;
             padding: 60px 40px;
@@ -27,6 +40,7 @@
             animation: fadeInUp 0.8s ease-out;
         }
 
+        /* Animação para o container do formulário */
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
@@ -49,29 +63,36 @@
             width: 100%;
             padding: 15px;
             margin: 10px 0;
+            /* Espaçamento entre os inputs e o botão */
             border: none;
             border-radius: 10px;
             font-size: 15px;
-            box-sizing: border-box;
         }
 
+        /* Estilo para o input em foco */
         input:focus {
             outline: none;
+            /* Remove a borda padrão do navegador */
             border: 2px solid #00ffff;
+            /* Adiciona uma borda ciano ao focar */
             box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+            /* Adiciona uma sombra ciano ao focar */
         }
 
         button {
             background-color: dodgerblue;
             color: white;
             transition: transform 0.2s ease, background-color 0.3s ease;
+            /* Transições suaves */
         }
 
         button:hover {
             background-color: deepskyblue;
             cursor: pointer;
+            /* Muda o cursor para indicar que é clicável */
         }
 
+        /* Efeito ao clicar no botão */
         button:active {
             transform: scale(0.95);
         }
@@ -79,7 +100,7 @@
 </head>
 
 <body>
-    <div>
+    <div class="login-container">
         <h1>Login</h1>
         <input type="text" placeholder="Nome">
         <input type="password" placeholder="Senha">
