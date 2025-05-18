@@ -3,109 +3,40 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            overflow-x: hidden;
-            /* Impede rolagem lateral */
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(45deg, cyan, yellow);
-            display: flex;
-            justify-content: center;
-            /* Centraliza horizontalmente */
-            align-items: center;
-            /* Centraliza verticalmente */
-        }
-
-        /* Estilo para o container do formulário de login */
-        div.login-container {
-            /* Adicionando uma classe para ser mais específico */
-            width: 400px;
-            background-color: #1c352c;
-            padding: 60px 40px;
-            border-radius: 15px;
-            color: #fff;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        /* Animação para o container do formulário */
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        input,
-        button {
-            width: 100%;
-            padding: 15px;
-            margin: 10px 0;
-            /* Espaçamento entre os inputs e o botão */
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-        }
-
-        /* Estilo para o input em foco */
-        input:focus {
-            outline: none;
-            /* Remove a borda padrão do navegador */
-            border: 2px solid #00ffff;
-            /* Adiciona uma borda ciano ao focar */
-            box-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
-            /* Adiciona uma sombra ciano ao focar */
-        }
-
-        button {
-            background-color: dodgerblue;
-            color: white;
-            transition: transform 0.2s ease, background-color 0.3s ease;
-            /* Transições suaves */
-        }
-
-        button:hover {
-            background-color: deepskyblue;
-            cursor: pointer;
-            /* Muda o cursor para indicar que é clicável */
-        }
-
-        /* Efeito ao clicar no botão */
-        button:active {
-            transform: scale(0.95);
-        }
-    </style>
+    <title>Cadastro</title>
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <input type="text" placeholder="Nome">
-        <input type="password" placeholder="Senha">
-        <button>Enviar</button>
-    </div>
+    <h2>Cadastro de Usuário</h2>
+    <form id="cadastroForm">
+        <input type="text" id="nome" placeholder="Nome" required><br><br>
+        <input type="email" id="email" placeholder="Email" required><br><br>
+        <input type="password" id="senha" placeholder="Senha" required><br><br>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('cadastroForm');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            const usuario = {
+                nome,
+                email,
+                senha
+            };
+
+            // Salvar no LocalStorage
+            localStorage.setItem('usuario', JSON.stringify(usuario));
+            alert('Cadastro realizado com sucesso!');
+            form.reset();
+        });
+    </script>
 </body>
 
 </html>
